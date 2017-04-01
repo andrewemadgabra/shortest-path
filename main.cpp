@@ -53,7 +53,7 @@ int main() {
 	{
 		cout << inputs[i].getC1() << "\t" << inputs[i].getC2() << "\t" << inputs[i].getlinkCost()<< endl;
 	} 
-	/* cout << "please enter the startcity and goalCity" << endl;
+	cout << "please enter the startcity and goalCity" << endl;
 	cin >> startCity >> goalCity;	
 	pCNode = new node(startCity, NULL, NULL, 0.0, false);
 	pFrontier->setpFirstNode(pCNode);
@@ -73,8 +73,8 @@ int main() {
 		pCNode = pCNode->getpnext();
 		cout << "result" << endl;
 	} */
-	/*cout << "goal is reached" << endl;
-	pFrontier->printList();	*/
+	cout << "goal is reached" << endl;
+	pFrontier->printList();	
 	
 
 
