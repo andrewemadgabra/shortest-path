@@ -49,11 +49,11 @@ void node::expand(vector<link>& links, list* pFrontier) {
 		tempNode = NULL;	// el fydy kol shwya
 		if (this->name == links[i].getC1()) {
 			foundnode = true;
-			tempNode = new node(links[i].getC2(), this, NULL, 0.0, false);
+			tempNode = new node(links[i].getC2(), this, NULL, getlinkCost()+this->cost, false);
 
 		} else if (this->name == links[i].getC2()) {
 			foundnode = true;
-			tempNode = new node(links[i].getC1(), this, NULL, 0.0, false);
+			tempNode = new node(links[i].getC1(), this, NULL, getlinkCost()+this->cost, false);
 		} else {
 			/// EMPTY
 		}

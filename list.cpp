@@ -26,9 +26,10 @@ list& list::operator=(const list& right) {
 }
 void list::printList(void) {
 	node* pCNode = this->getpFirstNode();
-
+    cout<< "Name"<<"/t"<<"parent"<<"/t"<<"cost"<<endl;
 	while (pCNode != NULL) {
-		cout << pCNode->getname() << endl;
+	//	cout << pCNode->getname() << endl;
+	cout << pCNode->getname()<<"\t"<<pCNode->getparent()<<"/t"<<pCNode->getcost()<< endl;
 		pCNode = pCNode->getpnext();
 	}
 	// cout << endl;
@@ -60,4 +61,12 @@ void list::printList(void) {
 					}
 	 } */
 }
-void list::printResult(void) {}
+void list::printResult(void) {
+	node* pCNode = this->getpFirstNode();
+    
+	while (pCNode != NULL) {
+	//	cout << pCNode->getname() << endl;
+	
+		pCNode = pCNode->getpnext();
+	}
+}
