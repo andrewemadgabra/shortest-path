@@ -44,7 +44,7 @@ using namespace std;
 int main() {
 	char key = 'q';
 	char startCity, goalCity;
-	node* pCNode = new node();
+	node* pCurrentNode = new node();
 	list* pFrontier = new list(NULL, NULL);	 
 	vector<link> inputs;
 	acquireLinks(inputs);
@@ -55,9 +55,9 @@ int main() {
 	} 
 	cout << "please enter the startcity and goalCity" << endl;
 	cin >> startCity >> goalCity;	
-	pCNode = new node(startCity, NULL, NULL, 0.0, false);
-	pFrontier->setpFirstNode(pCNode);
-	pFrontier->setpLastNode(pCNode);
+	pCurrentNode = new node(startCity, NULL, NULL, 0.0, false);
+	pFrontier->setpFirstNode(pCurrentNode);
+	pFrontier->setpLastNode(pCurrentNode);
 	/*while (!pCNode->isGoal(goalCity))
 	{
 		pCNode->setExplored(true);
@@ -78,12 +78,11 @@ int main() {
 	cout << "choose 1 is Breadth first search" << endl;
 	cout << "choose 2 is Deapth first search" << endl;
 	cout << "choose 3 is uniCost search" << endl;
-	cout << "goal is reached" << endl;
+	//cout << "goal is reached" << endl;
 	//pFrontier->printList();
 	cin >> choose;
 	switch (choose)
-	{
-		
+	{	
 	case 1:
 		while (!pCurrentNode->isGoal(goalCity))
 		{
@@ -219,9 +218,6 @@ int main() {
 		cin >> key;
 		break;
 	default:
-		break;	
-	
-
-
-     }
+		break;
+		  
 }
