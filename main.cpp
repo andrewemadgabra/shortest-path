@@ -77,7 +77,7 @@ int main() {
 	cout << "please enter the number of your choose to use the algorithm" << endl;
 	cout << "choose 1 is Breadth first search" << endl;
 	cout << "choose 2 is Deapth first search" << endl;
-	cout << "choose 3 is uniCost search" << endl;
+	cout << "choose 3 is uniform cost search" << endl;
 	//cout << "goal is reached" << endl;
 	//pFrontier->printList();
 	cin >> choose;
@@ -108,7 +108,7 @@ int main() {
 		{
 			pCurrentNode->setExplored(true);
 			pFrontier->printResult();
-			cout << startCity << "\t" << goalCity << "\t" << pCurrentNode->getCost() << endl;
+			cout << startCity << "\t" << goalCity << "\t" << pCurrentNode->getcost() << endl;
 			cin >> key;
 		}
 		break;
@@ -122,12 +122,12 @@ int main() {
 			{
 				pCurrentNode->setExplored(true);
 				pCurrentNode->expand(inputs, pFrontier);
-				pCurrentNode = pCurrentNode->getpNext();
+				pCurrentNode = pCurrentNode->getpnext();
 				temp = pCurrentNode;
 			}
 			else
 			{
-				pCurrentNode = pCurrentNode->getpNext();
+				pCurrentNode = pCurrentNode->getpnext();
 				while (!pCurrentNode->isGoal(goalCity))
 				{
 					newtemp = pCurrentNode;
@@ -137,7 +137,7 @@ int main() {
 					if (newtemp == pCurrentNode)
 					{
 						pCurrentNode = temp;
-						pCurrentNode = pCurrentNode->getpNext();
+						pCurrentNode = pCurrentNode->getpnext();
 						break;
 					}
 				}
@@ -151,7 +151,7 @@ int main() {
 		{
 			pCurrentNode->setExplored(true);
 			pFrontier->printResult();
-			cout << startCity << "\t" << goalCity << "\t" << pCurrentNode->getCost() << endl;
+			cout << startCity << "\t" << goalCity << "\t" << pCurrentNode->getcost() << endl;
 			cin >> key;
 		}
 		break;
@@ -162,12 +162,12 @@ int main() {
 		{
 			if (pCurrentNode->getpParent() == NULL)
 			{
-				cost1 = pCurrentNode->getCost();
+				cost1 = pCurrentNode->getcost();
 			}
 			else
 			{
-				cost1 = pCurrentNode->getpParent()->getCost() + pCurrentNode->getCost();
-				cost2 = pFrontier->getpLastNode()->getpParent()->getCost() + pFrontier->getpLastNode()->getCost();
+				cost1 = pCurrentNode->getpParent()->getcost() + pCurrentNode->getcost();
+				cost2 = pFrontier->getpLastNode()->getpParent()->getcost() + pFrontier->getpLastNode()->getcost();
 			}
 
 
@@ -176,7 +176,7 @@ int main() {
 				pCurrentNode = temp;
 				pCurrentNode->setExplored(true);
 				pCurrentNode->expand(inputs, pFrontier);
-				pCurrentNode = pCurrentNode->getpNext();
+				pCurrentNode = pCurrentNode->getpnext();
 			}
 			else if (cost2 < cost1)
 			{
@@ -190,7 +190,7 @@ int main() {
 				pCurrentNode = temp;
 				pCurrentNode->setExplored(true);
 				pCurrentNode->expand(inputs, pFrontier);
-				pCurrentNode = pCurrentNode->getpNext();
+				pCurrentNode = pCurrentNode->getpnext();
 			}
 			if (pCurrentNode == NULL)
 			{
@@ -199,7 +199,7 @@ int main() {
 				{
 					pCurrentNode->setExplored(true);
 					pCurrentNode->expand(inputs, pFrontier);
-					pCurrentNode = pCurrentNode->getpNext();
+					pCurrentNode = pCurrentNode->getpnext();
 				}
 
 			}
