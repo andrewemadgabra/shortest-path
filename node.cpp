@@ -49,18 +49,20 @@ void node::expand(vector<link>& links, list* pFrontier) {
 		tempNode = NULL;	// el fydy kol shwya
 		if (this->name == links[i].getC1()) {
 			foundnode = true;
-			tempNode = new node(links[i].getC2(), this, NULL, getlinkCost()+this->cost, false);
+			tempNode = new node(links[i].getC2(), this, NULL,links[i].getlinkCost()+ cost, false);
 
 		} else if (this->name == links[i].getC2()) {
 			foundnode = true;
-			tempNode = new node(links[i].getC1(), this, NULL, getlinkCost()+this->cost, false);
-		} else {
-			/// EMPTY
+			tempNode = new node(links[i].getC1(), this, NULL,links[i].getlinkCost() + cost, false);
 		}
 		// when found the node
 		if (foundnode == true) {
-			tempNode->pushNodeToList(pFrontier);
-			cout << "the node pushed" << endl;
+			/*tempNode->pushNodeToList(pFrontier);
+			cout << "the node pushed" << endl;*/
+			if (tempNode->isQualified(pFrontier))
+			{
+				tempNode->pushNodeToList(pFrontier);
+			}
 		}
 	}
 }
@@ -69,9 +71,37 @@ void node::pushNodeToList(list* pFrontier) {
 	// ana sence by error
 	pFrontier->getpLastNode()->pNext = this;
 	pFrontier->setpLastNode(this);
-	// setpLastNode(pFrontier);
-	// pLastNode->pNext = this;
-	// cout << "hello";
-	// pFrontier->printList();
+	
 }
-bool node::isQualified(list* pFrontier) { return true; }
+bool node::isQualified(list* pFrontier) { 
+	node* temp = new node();
+	node* previous = new node;
+	temp = pFrontier->getpFirstNode();
+	while (temp != NULL)
+	{
+		if (temp->name == this->name)
+		{
+			if (this->cost < temp->cost)
+			{
+				previous->pNext = this;
+				this->pNext = temp->pNext;
+			}
+			else if (temp->pNext == pFrontier->getpLastNode())
+			{
+				temp = temp->pNext;
+			}
+			return false;
+		}
+		else
+		{
+			previous = temp;
+			if (temp->pNext == NULL)
+			{
+				break;
+			}
+			temp = temp->pNext;
+		}
+	}
+	return true;
+}
+

@@ -213,7 +213,7 @@ int main() {
 		{
 			pCurrentNode->setExplored(true);
 			pFrontier->printResult();
-			cout << startCity << "\t" << goalCity << "\t" << pCurrentNode->getCost() << endl;
+			cout << startCity << "\t" << goalCity << "\t" << pCurrentNode->getcost() << endl;
 		}
 		cin >> key;
 		break;

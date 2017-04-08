@@ -25,48 +25,33 @@ list& list::operator=(const list& right) {
 	return *this;
 }
 void list::printList(void) {
-	node* pCNode = this->getpFirstNode();
-    cout<< "Name"<<"/t"<<"parent"<<"/t"<<"cost"<<endl;
-	while (pCNode != NULL) {
-	//	cout << pCNode->getname() << endl;
-	cout << pCNode->getname()<<"\t"<<pCNode->getparent()<<"/t"<<pCNode->getcost()<< endl;
-		pCNode = pCNode->getpnext();
-	}
-	// cout << endl;
-	/*node *pCNode = this->getpFirstNode();
-	while (pCNode != NULL) {
-					cout << pLastNode->getname()<< endl;
-					pCNode = pCNode->getpnext();
-	}	 */
-	// pLastNode->
-	// std::cout << *pFirstNode << *pLastNode << endl;
-	/*if (pFirstNode == NULL)
-					{
-									pFirstNode = pLastNode ;
-					}
-					else
-					{
-									pLastNode = pLastNode->getpnext;
-					}
-
-					cout << pFirstNode;	*/
-	/*
-	list()<string>::const_iterator i;
-	for ( i = s.begin(); i < s.end(); i++)
+	cout << "Name" << "\t" << "ParentName" << "\t" << "Cost" << endl;
+	node* pCurrentName = this->getpFirstNode()->getpnext();
+	
+	while (pCurrentName != NULL) 
 	{
-
-					if (pLastNode == NULL)
-					{
-									exit(0);
-					}
-	 } */
+		cout << pCurrentName->getname() << "\t " << pCurrentName->getparent()->getname() << "\t " <<"\t"<< pCurrentName->getcost() << endl;
+		pCurrentName = pCurrentName->getpnext();
+	}
 }
 void list::printResult(void) {
-	node* pCNode = this->getpFirstNode();
-    
-	while (pCNode != NULL) {
-	//	cout << pCNode->getname() << endl;
-	
-		pCNode = pCNode->getpnext();
+	node* previous;
+	int counter = 0;
+	node*pCurrentNode = this->getpFirstNode();
+	previous = pCurrentNode;
+	while (pCurrentNode !=NULL)
+	{
+		if (pCurrentNode->getexplored())
+		{
+			cout << pCurrentNode->getname()<<endl;
+			if (previous->getparent() != pCurrentNode->getparent())
+			{
+				counter++;
+			}
+		}
+		previous = pCurrentNode;
+		pCurrentNode = pCurrentNode->getpnext();
 	}
+	cout << "number of Expanded" << endl;
+	cout << counter << endl;
 }
