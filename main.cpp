@@ -42,7 +42,7 @@ int main()
 using namespace std;
 
 int main() {
-
+	char key = 'q';
 	char startCity, goalCity;
 	node* pCNode = new node();
 	list* pFrontier = new list(NULL, NULL);	 
@@ -223,4 +223,5 @@ int main() {
 	
 
 
+     }
 }
